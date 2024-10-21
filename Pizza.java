@@ -28,7 +28,7 @@ public class Pizza {
         return pizzaName;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
