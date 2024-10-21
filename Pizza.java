@@ -8,11 +8,11 @@ import java.util.List;
 public class Pizza {
     private int pizzaID;
     private String pizzaName;
-    private double price;
+    private int price;
     private List<String> ingredients;
 
     // contstructor
-    public Pizza(int pizzaID, String pizzaName, double price, List<String> ingredients) {
+    public Pizza(int pizzaID, String pizzaName, int price, List<String> ingredients) {
         this.pizzaID = pizzaID;
         this.pizzaName = pizzaName;
         this.price = price;

@@ -4,18 +4,29 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         // test Pizza objekter
-        List<String> margheritaIngredients = new ArrayList<>();
-        margheritaIngredients.add("Tomato Sauce");
-        margheritaIngredients.add("Mozzarella");
-        margheritaIngredients.add("Basil");
+        List<String> vesuvioIngredients = new ArrayList<>();
+        vesuvioIngredients.add("Tomatsauce");
+        vesuvioIngredients.add("Ost");
+        vesuvioIngredients.add("Skinke");
+        vesuvioIngredients.add("Oregano");
 
-        Pizza margherita = new Pizza(1, "Margherita", 8.99, margheritaIngredients);
+        Pizza vesuvio = new Pizza(1, "Vesuvio", 57, vesuvioIngredients);
 
-        List<String> pepperoniIngredients = new ArrayList<>();
-        pepperoniIngredients.add("Tomato Sauce");
-        pepperoniIngredients.add("Mozzarella");
-        pepperoniIngredients.add("Pepperoni");
+        List<String> amerikanerIngredients = new ArrayList<>();
+        amerikanerIngredients.add("Tomatsauce");
+        amerikanerIngredients.add("Ost");
+        amerikanerIngredients.add("Oksefars");
+        amerikanerIngredients.add("Oregano");
 
-        Pizza pepperoni = new Pizza(2,"Pepperoni", 9.99, pepperoniIngredients);
+        Pizza amerikaner = new Pizza(2,"Amerikaner", 53, amerikanerIngredients);
+
+        // tilføj pizzaer til en menu
+        Menu pizzaMenu = new Menu();
+
+        pizzaMenu.addPizza(vesuvio);
+        pizzaMenu.addPizza(amerikaner);
+
+        // vis menu
+        pizzaMenu.displayMenu();
     }
 }

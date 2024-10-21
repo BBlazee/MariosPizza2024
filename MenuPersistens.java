@@ -4,12 +4,13 @@
  */
 
 // ufærdig persistens i form af .txt fil
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
 
-public class MenuPersistens {
+//import java.io.BufferedReader;
+//import java.io.FileReader;
+//import java.io.FileWriter;
+//import java.io.IOException;
 
-    public static void writePizza
-}
+//public class MenuPersistens {
+
+    //public static void writePizza
+//}
