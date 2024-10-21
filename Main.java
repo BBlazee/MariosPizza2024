@@ -9,21 +9,13 @@ public class Main {
         margheritaIngredients.add("Mozzarella");
         margheritaIngredients.add("Basil");
 
-        Pizza margherita = new Pizza("Margherita", 8.99, margheritaIngredients);
+        Pizza margherita = new Pizza(1, "Margherita", 8.99, margheritaIngredients);
 
         List<String> pepperoniIngredients = new ArrayList<>();
         pepperoniIngredients.add("Tomato Sauce");
         pepperoniIngredients.add("Mozzarella");
         pepperoniIngredients.add("Pepperoni");
 
-        Pizza pepperoni = new Pizza("Pepperoni", 9.99, pepperoniIngredients);
-
-        // Test Menu
-        Menu pizzaMenu = new Menu();
-        pizzaMenu.addPizza(margherita);
-        pizzaMenu.addPizza(pepperoni);
-
-        // Vis Menuen
-        pizzaMenu.displayMenu();
+        Pizza pepperoni = new Pizza(2,"Pepperoni", 9.99, pepperoniIngredients);
     }
 }

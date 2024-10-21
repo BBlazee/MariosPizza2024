@@ -3,15 +3,15 @@
  * @ 21.september
  */
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Menu {
     private List<Pizza> pizzas;
 
 // constructor der initialiserer menuen med en tom ArrayList [pizzas]
 public Menu() {
-    this.pizzas = new ArrayList<>() 
+    this.pizzas = new ArrayList<>();
     }
 
     // metode med et for-each loop der viser hver [Pizza] i [pizzas]-listen

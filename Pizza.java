@@ -6,17 +6,17 @@
 import java.util.List;
 
 public class Pizza {
-    private int pizzaID
-    private String pizzaName
-    private double price
-    private List<String> ingredients
+    private int pizzaID;
+    private String pizzaName;
+    private double price;
+    private List<String> ingredients;
 
     // contstructor
-    public Pizza(int pizzaID, String pizzaName, int price, String ingredients) {
+    public Pizza(int pizzaID, String pizzaName, double price, List<String> ingredients) {
         this.pizzaID = pizzaID;
         this.pizzaName = pizzaName;
         this.price = price;
-        this.ingredients = ingredients
+        this.ingredients = ingredients;
     }
     
     // get metoder
