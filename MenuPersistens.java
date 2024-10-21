@@ -3,6 +3,7 @@
  * @ 21.september
  */
 
+// ufærdig persistens i form af .txt fil
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;

@@ -3,7 +3,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        // Create a few pizza objects
+        // test Pizza objekter
         List<String> margheritaIngredients = new ArrayList<>();
         margheritaIngredients.add("Tomato Sauce");
         margheritaIngredients.add("Mozzarella");
@@ -18,12 +18,12 @@ public class Main {
 
         Pizza pepperoni = new Pizza("Pepperoni", 9.99, pepperoniIngredients);
 
-        // Create the menu and add pizzas to it
+        // Test Menu
         Menu pizzaMenu = new Menu();
         pizzaMenu.addPizza(margherita);
         pizzaMenu.addPizza(pepperoni);
 
-        // Display the menu
+        // Vis Menuen
         pizzaMenu.displayMenu();
     }
 }
