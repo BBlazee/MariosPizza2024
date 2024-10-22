@@ -3,112 +3,133 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        // test Pizza objekter
-        List<String> vesuvioIngredients = new ArrayList<>();
-        vesuvioIngredients.add("Skinke");
 
-        Pizza vesuvio = new Pizza(1, "Vesuvio", 57, vesuvioIngredients);
+         // definer ingredienserne som Ingredient objekter
+         Ingredient skinke = new Ingredient(1, "Skinke", 7);
+         Ingredient oksefars = new Ingredient(2, "Oksefars", 5);
+         Ingredient pepperoni = new Ingredient(3, "Pepperoni", 7);
+         Ingredient koedsauce = new Ingredient(4, "Koedsauce", 6);
+         Ingredient spaghetti = new Ingredient(5, "Spaghetti", 3);
+         Ingredient cocktailpoelser = new Ingredient(6, "Cocktailpoelser", 4);
+         Ingredient bacon = new Ingredient(7, "Bacon", 7);
+         Ingredient roedPeber = new Ingredient(8, "Roed Peber", 3);
+         Ingredient loeg = new Ingredient(9, "Loeg", 3);
+         Ingredient oliven = new Ingredient(10, "Oliven", 4);
+         Ingredient ananas = new Ingredient(11, "Ananas", 6);
+         Ingredient champignon = new Ingredient(12, "Champignon", 4);
+         Ingredient rejer = new Ingredient(13, "Rejer", 8);
+         Ingredient kebab = new Ingredient(14, "Kebab", 8);
+         Ingredient chili = new Ingredient(15, "Chili", 4);
+ 
+         // definer de forskellige Pizza objekter med Ingredient'er
+         List<Ingredient> vesuvioIngredients = new ArrayList<>();
+         vesuvioIngredients.add(skinke);
+ 
+         Pizza vesuvio = new Pizza(1, "Vesuvio", vesuvioIngredients);
+ 
+         List<Ingredient> amerikanerIngredients = new ArrayList<>();
+         amerikanerIngredients.add(oksefars);
+ 
+         Pizza amerikaner = new Pizza(2, "Amerikaner", amerikanerIngredients);
+ 
+         List<Ingredient> cacciatoreIngredients = new ArrayList<>();
+         cacciatoreIngredients.add(pepperoni);
+ 
+         Pizza cacciatore = new Pizza(3, "Cacciatore", cacciatoreIngredients);
+ 
+         List<Ingredient> carbonaraIngredients = new ArrayList<>();
+         carbonaraIngredients.add(koedsauce);
+         carbonaraIngredients.add(spaghetti);
+         carbonaraIngredients.add(cocktailpoelser);
+ 
+         Pizza carbonara = new Pizza(4, "Carbonara", carbonaraIngredients);
+ 
+         List<Ingredient> dennisIngredients = new ArrayList<>();
+         dennisIngredients.add(skinke);
+         dennisIngredients.add(pepperoni);
+         dennisIngredients.add(cocktailpoelser);
+ 
+         Pizza dennis = new Pizza(5, "Dennis", dennisIngredients);
+ 
+         List<Ingredient> bertilIngredients = new ArrayList<>();
+         bertilIngredients.add(bacon);
+ 
+         Pizza bertil = new Pizza(6, "Bertil", bertilIngredients);
+ 
+         List<Ingredient> silviaIngredients = new ArrayList<>();
+         silviaIngredients.add(pepperoni);
+         silviaIngredients.add(roedPeber);
+         silviaIngredients.add(loeg);
+         silviaIngredients.add(oliven);
+ 
+         Pizza silvia = new Pizza(7, "Silvia", silviaIngredients);
+ 
+         List<Ingredient> victoriaIngredients = new ArrayList<>();
+         victoriaIngredients.add(ananas);
+         victoriaIngredients.add(champignon);
+         victoriaIngredients.add(loeg);
+ 
+         Pizza victoria = new Pizza(8, "Victoria", victoriaIngredients);
+ 
+         List<Ingredient> toronfoIngredients = new ArrayList<>();
+         toronfoIngredients.add(skinke);
+         toronfoIngredients.add(bacon);
+         toronfoIngredients.add(kebab);
+         toronfoIngredients.add(chili);
+ 
+         Pizza toronfo = new Pizza(9, "Toronfo", toronfoIngredients);
+ 
+         List<Ingredient> capricciosaIngredients = new ArrayList<>();
+         capricciosaIngredients.add(skinke);
+         capricciosaIngredients.add(champignon);
+ 
+         Pizza capricciosa = new Pizza(10, "Capricciosa", capricciosaIngredients);
+ 
+         List<Ingredient> hawaiiIngredients = new ArrayList<>();
+         hawaiiIngredients.add(skinke);
+         hawaiiIngredients.add(ananas);
+ 
+         Pizza hawaii = new Pizza(11, "Hawaii", hawaiiIngredients);
+ 
+         List<Ingredient> leblissolaIngredients = new ArrayList<>();
+         leblissolaIngredients.add(skinke);
+         leblissolaIngredients.add(rejer);
+ 
+         Pizza leblissola = new Pizza(12, "Le Blissola", leblissolaIngredients);
+ 
+         List<Ingredient> veneziaIngredients = new ArrayList<>();
+         veneziaIngredients.add(skinke);
+         veneziaIngredients.add(bacon);
+ 
+         Pizza venezia = new Pizza(13, "Venezia", veneziaIngredients);
+ 
+         List<Ingredient> mafiaIngredients = new ArrayList<>();
+         mafiaIngredients.add(pepperoni);
+         mafiaIngredients.add(bacon);
+         mafiaIngredients.add(loeg);
+ 
+         Pizza mafia = new Pizza(14, "Mafia", mafiaIngredients);
+ 
+         // tilføj Pizza'erne til en Menu pizzaMenu
+         Menu pizzaMenu = new Menu();
+ 
+         pizzaMenu.addPizza(vesuvio);
+         pizzaMenu.addPizza(amerikaner);
+         pizzaMenu.addPizza(cacciatore);
+         pizzaMenu.addPizza(carbonara);
+         pizzaMenu.addPizza(dennis);
+         pizzaMenu.addPizza(bertil);
+         pizzaMenu.addPizza(silvia);
+         pizzaMenu.addPizza(victoria);
+         pizzaMenu.addPizza(toronfo);
+         pizzaMenu.addPizza(capricciosa);
+         pizzaMenu.addPizza(hawaii);
+         pizzaMenu.addPizza(leblissola);
+         pizzaMenu.addPizza(venezia);
+         pizzaMenu.addPizza(mafia);
+ 
+         // vis menuen i terminalen
+         pizzaMenu.displayMenu();
+     }
 
-        List<String> amerikanerIngredients = new ArrayList<>();
-        amerikanerIngredients.add("Oksefars");
-
-        Pizza amerikaner = new Pizza(2, "Amerikaner", 53, amerikanerIngredients);
-
-        List<String> cacciatoreIngredients = new ArrayList<>();
-        cacciatoreIngredients.add("Pepperoni");
-
-        Pizza cacciatore = new Pizza(3, "Cacciatore", 57, cacciatoreIngredients);
-
-        List<String> carbonaraIngredients = new ArrayList<>();
-        carbonaraIngredients.add("Koedsauce");
-        carbonaraIngredients.add("Spaghetti");
-        carbonaraIngredients.add("Cocktailpoelser");
-
-        Pizza carbonara = new Pizza(4, "Carbonara", 63, carbonaraIngredients);
-
-        List<String> dennisIngredients = new ArrayList<>();
-        dennisIngredients.add("Skinke");
-        dennisIngredients.add("Pepperoni");
-        dennisIngredients.add("Cocktailpoelser");
-
-        Pizza dennis = new Pizza(5, "Dennis", 65, dennisIngredients);
-
-        List<String> bertilIngredients = new ArrayList<>();
-        bertilIngredients.add("Bacon");
-
-        Pizza bertil = new Pizza(6, "Bertil", 57, bertilIngredients);
-
-        List<String> silviaIngredients = new ArrayList<>();
-        silviaIngredients.add("Pepperoni");
-        silviaIngredients.add("Roed peber");
-        silviaIngredients.add("Loeg");
-        silviaIngredients.add("Oliven");
-
-        Pizza silvia = new Pizza(7, "Silvia", 61, silviaIngredients);
-
-        List<String> victoriaIngredients = new ArrayList<>();
-        victoriaIngredients.add("Ananas");
-        victoriaIngredients.add("Champignon");
-        victoriaIngredients.add("Loeg");
-
-        Pizza victoria = new Pizza(8, "Victoria", 61, victoriaIngredients);
-
-        List<String> toronfoIngredients = new ArrayList<>();
-        toronfoIngredients.add("Bacon");
-        toronfoIngredients.add("Kebab");
-        toronfoIngredients.add("Chili");
-
-        Pizza toronfo = new Pizza(9, "Toronfo", 61, toronfoIngredients);
-
-        List<String> capricciosaIngredients = new ArrayList<>();
-        capricciosaIngredients.add("Skinke");
-        capricciosaIngredients.add("Champignon");
-
-        Pizza capricciosa = new Pizza(10, "Capricciosa", 61, capricciosaIngredients);
-
-        List<String> hawaiiIngredients = new ArrayList<>();
-        hawaiiIngredients.add("Ananas");
-
-        Pizza hawaii = new Pizza(11, "Hawaii", 61, hawaiiIngredients);
-
-        List<String> leblissolaIngredients = new ArrayList<>();
-        leblissolaIngredients.add("Skinke");
-        leblissolaIngredients.add("Rejer");
-
-        Pizza leblissola = new Pizza(12, "Le Blissola", 61, leblissolaIngredients);
-
-        List<String> veneziaIngredients = new ArrayList<>();
-        veneziaIngredients.add("Skinke");
-        veneziaIngredients.add("Bacon");
-
-        Pizza venezia = new Pizza(13, "Venezia", 61, veneziaIngredients);
-
-        List<String> mafiaIngredients = new ArrayList<>();
-        mafiaIngredients.add("Pepperoni");
-        mafiaIngredients.add("Bacon");
-        mafiaIngredients.add("Loeg");
-
-        Pizza mafia = new Pizza(14, "Mafia", 61, mafiaIngredients);
-
-        // tilføj pizzaer til en menu
-        Menu pizzaMenu = new Menu();
-
-        pizzaMenu.addPizza(vesuvio);
-        pizzaMenu.addPizza(amerikaner);
-        pizzaMenu.addPizza(cacciatore);
-        pizzaMenu.addPizza(carbonara);
-        pizzaMenu.addPizza(dennis);
-        pizzaMenu.addPizza(bertil);
-        pizzaMenu.addPizza(silvia);
-        pizzaMenu.addPizza(victoria);
-        pizzaMenu.addPizza(toronfo);
-        pizzaMenu.addPizza(capricciosa);
-        pizzaMenu.addPizza(hawaii);
-        pizzaMenu.addPizza(leblissola);
-        pizzaMenu.addPizza(venezia);
-        pizzaMenu.addPizza(mafia);
-
-        // vis menu
-        pizzaMenu.displayMenu();
-    }
 }
