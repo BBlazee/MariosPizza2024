@@ -3,6 +3,7 @@
  * @ 21.september
  */
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Pizza {
@@ -12,11 +13,21 @@ public class Pizza {
     private List<String> ingredients;
 
     // contstructor
-    public Pizza(int pizzaID, String pizzaName, int price, List<String> ingredients) {
+    public Pizza(int pizzaID, String pizzaName, int price, List<String> specificIngredients) {
         this.pizzaID = pizzaID;
         this.pizzaName = pizzaName;
         this.price = price;
-        this.ingredients = ingredients;
+        this.ingredients = new ArrayList<>();
+        addCommonIngredients(specificIngredients);
+    }
+
+    private void addCommonIngredients(List<String> specificIngredients) {
+        this.ingredients.add("Tomatsauce");
+        this.ingredients.add("Ost");
+
+        this.ingredients.addAll(specificIngredients);
+
+        this.ingredients.add("Oregano");
     }
     
     // get metoder
