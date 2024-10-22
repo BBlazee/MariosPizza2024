@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 public class Main {
     public static void main(String[] args) {
@@ -128,6 +129,29 @@ public class Main {
          pizzaMenu.addPizza(venezia);
          pizzaMenu.addPizza(mafia);
  
+        // create a string representation of the menu for the popup
+StringBuilder menuString = new StringBuilder("Menu:\n");
+for (Pizza pizza : pizzaMenu.getPizzas()) {
+    menuString.append("Pizza ").append(pizza.getPizzaID())
+              .append(": ").append(pizza.getName())
+              .append(" - Pris: ").append(pizza.calculatePrice())
+              .append("\nIngredienser: Tomatsauce, Ost, ");
+
+    // Append each ingredient name from the list of ingredients
+    for (Ingredient ingredient : pizza.getIngredients()) {
+        menuString.append(ingredient.getIngredientName()).append(", ");
+    }
+
+    menuString.append("Oregano.");
+
+    // spacing
+    menuString.append("\n\n");
+}
+
+// display the menu in a popup window
+JOptionPane.showMessageDialog(null, menuString.toString());
+
+
          // vis menuen i terminalen
          pizzaMenu.displayMenu();
      }
