@@ -20,7 +20,7 @@ public class Pizza {
         this.ingredients = new ArrayList<>();
         addCommonIngredients(specificIngredients);
     }
-
+    // tilføj ingredienser der gentages paa hver pizza, samt de specifikke ingredienser
     private void addCommonIngredients(List<String> specificIngredients) {
         this.ingredients.add("Tomatsauce");
         this.ingredients.add("Ost");

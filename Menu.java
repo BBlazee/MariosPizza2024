@@ -14,7 +14,7 @@ public class Menu {
         this.pizzas = new ArrayList<>();
     }
 
-    // metoder til at tilføje og fjerne fra pizzaer fra [pizzas]
+    // metoder til at tilføje og fjerne [Pizza]'er fra [pizzas]
     public void addPizza(Pizza pizza) {
         pizzas.add(pizza);
     }
