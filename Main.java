@@ -22,7 +22,7 @@ public class Main {
          Ingredient kebab = new Ingredient(14, "Kebab", 8);
          Ingredient chili = new Ingredient(15, "Chili", 4);
  
-         // definer de forskellige Pizza objekter med Ingredient'er
+         // definer de forskellige Pizza objekter med Ingredient'er. der er meget kode duplikation her, som formentlig kan forsimples paa en eller anden maade...
          List<Ingredient> vesuvioIngredients = new ArrayList<>();
          vesuvioIngredients.add(skinke);
  

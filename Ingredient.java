@@ -28,6 +28,8 @@ public class Ingredient {
         return ingredientPrice;
     }
 
+    // Overrider toString(), som er en metode alle klasser nedarver fra Java (Object klassen), til at return ingrediensens navn i stedet for dens hash code.
+    // dette betyder, at f.eks. System.out.println(tomatsauce) vil output "Tomatsauce", i stedet for volapyk som "Ingredient@5e91993f".
     @Override
     public String toString() {
         return ingredientName;
