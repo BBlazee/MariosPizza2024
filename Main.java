@@ -156,4 +156,35 @@ JOptionPane.showMessageDialog(null, menuString.toString());
          pizzaMenu.displayMenu();
      }
 
+// customer test
+{
+    Customer customer1 = new Customer(1, "Cheese McDick", "123456969", true, "12 Cock st", 0);
+    
+    System.out.println("Customer ID: " + customer1.getId());
+    System.out.println("Customer Name: " + customer1.getName());
+    System.out.println("Customer Phone: " + customer1.getPhoneNumber());  
+    System.out.println("Customer VIP: " + customer1.isVip()); 
+    System.out.println("Customer Address: " + customer1.getAddress());
+    System.out.println("Customer Order Count: " + customer1.getOrderCount());
+    
+    customer1.setName("Klaus Cockberg");
+    customer1.setPhoneNumber("987654321");
+    customer1.setVip(false);
+    customer1.setAddress("456 Balls Ave");
+    
+    System.out.println("\nAfter updating customer details:");
+    System.out.println("Updated Name: " + customer1.getName());  // Should print "Klaus Cockberg"
+    System.out.println("Updated Phone: " + customer1.getPhoneNumber());  // Should print "987654321"
+    System.out.println("Updated VIP: " + customer1.isVip());  // Should print false
+    System.out.println("Updated Address: " + customer1.getAddress());  // Should print "456 Balls Ave"
+    
+    double originalPrice = 100.0;
+    double discountedPrice = customer1.applyDiscount(originalPrice);
+    System.out.println("\nPrice after discount: " + discountedPrice);  // Should print 100.0 (since VIP is false)
+    
+    customer1.setVip(true);
+    discountedPrice = customer1.applyDiscount(originalPrice);
+    System.out.println("Price after VIP discount: " + discountedPrice);
+}
+
 }
