@@ -40,6 +40,11 @@
      public List<Ingredient> getIngredients() {
          return ingredients;
      }
+    
+     // missing for Order class functionality
+     public int getPrice() {
+        return calculatePrice();
+    }
  
      // vis en given pizza, kaldes i Menu klassen
      public void displayPizza() {
