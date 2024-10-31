@@ -1,190 +1,215 @@
+/**
+ * Main - The main entry point for the application.
+ *
+ * This class provides an interactive console-based menu to manage pizzas and orders. 
+ * Users can view the pizza menu, add/remove pizzas, place new orders, view orders, 
+ * and edit or cancel existing ones. The main loop presents options to the user 
+ * and calls relevant methods to handle each option.
+ *
+ * How to Use:
+ *  - Run the main method to start the application.
+ *  - Choose options in the menu to perform actions, such as:
+ *      - Viewing or modifying the pizza menu
+ *      - Placing, viewing, or editing orders
+ *  - Uses `InputHelper` to validate inputs and `DatabaseOrderManager` to manage 
+ *    order data in the database.
+ *
+ * Dependencies:
+ *  - PizzaMenu: Manages available pizzas.
+ *  - DatabaseOrderManager: Handles loading, saving, and updating orders in the database.
+ *  - InputHelper: Gathers and validates user input.
+ */
+
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+// import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
-import javax.swing.JOptionPane;
 
 public class Main {
     public static void main(String[] args) {
+        DatabaseManager.initialize();  // Initialize database connection
+        DatabaseOrderManager orderManager = new DatabaseOrderManager();  // Database manager for orders
+        PizzaMenu pizzaMenu = new PizzaMenu();
+        InputHelper inputHelper = new InputHelper();
+        List<Order> orders = orderManager.loadOrders();  // Load orders from the database
+        boolean exit = false;
 
-         // definer ingredienserne som Ingredient objekter
-         Ingredient skinke = new Ingredient(1, "Skinke", 7);
-         Ingredient oksefars = new Ingredient(2, "Oksefars", 5);
-         Ingredient pepperoni = new Ingredient(3, "Pepperoni", 7);
-         Ingredient koedsauce = new Ingredient(4, "Koedsauce", 6);
-         Ingredient spaghetti = new Ingredient(5, "Spaghetti", 3);
-         Ingredient cocktailpoelser = new Ingredient(6, "Cocktailpoelser", 4);
-         Ingredient bacon = new Ingredient(7, "Bacon", 7);
-         Ingredient roedPeber = new Ingredient(8, "Roed Peber", 3);
-         Ingredient loeg = new Ingredient(9, "Loeg", 3);
-         Ingredient oliven = new Ingredient(10, "Oliven", 4);
-         Ingredient ananas = new Ingredient(11, "Ananas", 6);
-         Ingredient champignon = new Ingredient(12, "Champignon", 4);
-         Ingredient rejer = new Ingredient(13, "Rejer", 8);
-         Ingredient kebab = new Ingredient(14, "Kebab", 8);
-         Ingredient chili = new Ingredient(15, "Chili", 4);
- 
-         // definer de forskellige Pizza objekter med Ingredient'er. der er meget kode duplikation her, som formentlig kan forsimples paa en eller anden maade...
-         List<Ingredient> vesuvioIngredients = new ArrayList<>();
-         vesuvioIngredients.add(skinke);
- 
-         Pizza vesuvio = new Pizza(1, "Vesuvio", vesuvioIngredients);
- 
-         List<Ingredient> amerikanerIngredients = new ArrayList<>();
-         amerikanerIngredients.add(oksefars);
- 
-         Pizza amerikaner = new Pizza(2, "Amerikaner", amerikanerIngredients);
- 
-         List<Ingredient> cacciatoreIngredients = new ArrayList<>();
-         cacciatoreIngredients.add(pepperoni);
- 
-         Pizza cacciatore = new Pizza(3, "Cacciatore", cacciatoreIngredients);
- 
-         List<Ingredient> carbonaraIngredients = new ArrayList<>();
-         carbonaraIngredients.add(koedsauce);
-         carbonaraIngredients.add(spaghetti);
-         carbonaraIngredients.add(cocktailpoelser);
- 
-         Pizza carbonara = new Pizza(4, "Carbonara", carbonaraIngredients);
- 
-         List<Ingredient> dennisIngredients = new ArrayList<>();
-         dennisIngredients.add(skinke);
-         dennisIngredients.add(pepperoni);
-         dennisIngredients.add(cocktailpoelser);
- 
-         Pizza dennis = new Pizza(5, "Dennis", dennisIngredients);
- 
-         List<Ingredient> bertilIngredients = new ArrayList<>();
-         bertilIngredients.add(bacon);
- 
-         Pizza bertil = new Pizza(6, "Bertil", bertilIngredients);
- 
-         List<Ingredient> silviaIngredients = new ArrayList<>();
-         silviaIngredients.add(pepperoni);
-         silviaIngredients.add(roedPeber);
-         silviaIngredients.add(loeg);
-         silviaIngredients.add(oliven);
- 
-         Pizza silvia = new Pizza(7, "Silvia", silviaIngredients);
- 
-         List<Ingredient> victoriaIngredients = new ArrayList<>();
-         victoriaIngredients.add(ananas);
-         victoriaIngredients.add(champignon);
-         victoriaIngredients.add(loeg);
- 
-         Pizza victoria = new Pizza(8, "Victoria", victoriaIngredients);
- 
-         List<Ingredient> toronfoIngredients = new ArrayList<>();
-         toronfoIngredients.add(skinke);
-         toronfoIngredients.add(bacon);
-         toronfoIngredients.add(kebab);
-         toronfoIngredients.add(chili);
- 
-         Pizza toronfo = new Pizza(9, "Toronfo", toronfoIngredients);
- 
-         List<Ingredient> capricciosaIngredients = new ArrayList<>();
-         capricciosaIngredients.add(skinke);
-         capricciosaIngredients.add(champignon);
- 
-         Pizza capricciosa = new Pizza(10, "Capricciosa", capricciosaIngredients);
- 
-         List<Ingredient> hawaiiIngredients = new ArrayList<>();
-         hawaiiIngredients.add(skinke);
-         hawaiiIngredients.add(ananas);
- 
-         Pizza hawaii = new Pizza(11, "Hawaii", hawaiiIngredients);
- 
-         List<Ingredient> leblissolaIngredients = new ArrayList<>();
-         leblissolaIngredients.add(skinke);
-         leblissolaIngredients.add(rejer);
- 
-         Pizza leblissola = new Pizza(12, "Le Blissola", leblissolaIngredients);
- 
-         List<Ingredient> veneziaIngredients = new ArrayList<>();
-         veneziaIngredients.add(skinke);
-         veneziaIngredients.add(bacon);
- 
-         Pizza venezia = new Pizza(13, "Venezia", veneziaIngredients);
- 
-         List<Ingredient> mafiaIngredients = new ArrayList<>();
-         mafiaIngredients.add(pepperoni);
-         mafiaIngredients.add(bacon);
-         mafiaIngredients.add(loeg);
- 
-         Pizza mafia = new Pizza(14, "Mafia", mafiaIngredients);
- 
-         // tilføj Pizza'erne til en Menu pizzaMenu
-         Menu pizzaMenu = new Menu();
- 
-         pizzaMenu.addPizza(vesuvio);
-         pizzaMenu.addPizza(amerikaner);
-         pizzaMenu.addPizza(cacciatore);
-         pizzaMenu.addPizza(carbonara);
-         pizzaMenu.addPizza(dennis);
-         pizzaMenu.addPizza(bertil);
-         pizzaMenu.addPizza(silvia);
-         pizzaMenu.addPizza(victoria);
-         pizzaMenu.addPizza(toronfo);
-         pizzaMenu.addPizza(capricciosa);
-         pizzaMenu.addPizza(hawaii);
-         pizzaMenu.addPizza(leblissola);
-         pizzaMenu.addPizza(venezia);
-         pizzaMenu.addPizza(mafia);
- 
-        // create a string representation of the menu for the popup
-StringBuilder menuString = new StringBuilder("Menu:\n");
-for (Pizza pizza : pizzaMenu.getPizzas()) {
-    menuString.append("Pizza ").append(pizza.getPizzaID())
-              .append(": ").append(pizza.getName())
-              .append(" - Pris: ").append(pizza.calculatePrice())
-              .append("\nIngredienser: Tomatsauce, Ost, ");
+        System.out.println("Loaded Orders:");
+        for (Order order : orders) {
+            order.displayOrder();
+            System.out.println("----------");
+        }
 
-    // Append each ingredient name from the list of ingredients
-    for (Ingredient ingredient : pizza.getIngredients()) {
-        menuString.append(ingredient.getIngredientName()).append(", ");
+        while (!exit) {
+            displayMainMenu();
+            int choice = inputHelper.getInt("Choose an option: ");
+
+            switch (choice) {
+                case 0 -> {
+                    exit = true;
+                    System.out.println("Exiting menu system.");
+                }
+                case 1 -> pizzaMenu.displayMenu();
+                case 2 -> addPizzaToMenu(inputHelper, pizzaMenu);
+                case 3 -> removePizzaFromMenu(inputHelper, pizzaMenu);
+                case 4 -> placeNewOrder(inputHelper, pizzaMenu, orders, orderManager);
+                case 5 -> viewAllOrders(orders);
+                case 6 -> editOrder(inputHelper, pizzaMenu, orders, orderManager);
+                default -> System.out.println("Invalid option. Please try again.");
+            }
+        }
+        inputHelper.close();
+        DatabaseManager.close();  // Close the database connection at the end
     }
 
-    menuString.append("Oregano.");
+    private static void displayMainMenu() {
+        System.out.println("---------------------");
+        System.out.println("\nMenu System:");
+        System.out.println("1. Display Pizza Menu");
+        System.out.println("2. Add Pizza to Menu");
+        System.out.println("3. Remove Pizza from Menu");
+        System.out.println("4. Place a New Order");
+        System.out.println("5. View All Orders");
+        System.out.println("6. Edit an Order");
+        System.out.println("0. Exit");
+    }
 
-    // spacing
-    menuString.append("\n\n");
-}
+    private static void addPizzaToMenu(InputHelper inputHelper, PizzaMenu pizzaMenu) {
+        String pizzaName = inputHelper.getString("Enter pizza name to add: ");
+        int price = inputHelper.getInt("Enter price for " + pizzaName + ": ");
+        List<String> ingredients = getIngredientsFromUser(inputHelper);
 
-// display the menu in a popup window
-JOptionPane.showMessageDialog(null, menuString.toString());
+        Pizza newPizza = new Pizza(pizzaMenu.getPizzas().size() + 1, pizzaName, ingredients, price);
+        pizzaMenu.addPizza(newPizza);
+        System.out.println("Added " + pizzaName + " with price " + price + " and ingredients " + ingredients);
+    }
 
+    private static List<String> getIngredientsFromUser(InputHelper inputHelper) {
+        List<String> ingredients = new ArrayList<>();
+        System.out.println("Enter ingredients one by one (type 'done' when finished):");
+        while (true) {
+            String ingredient = inputHelper.getString("Ingredient: ");
+            if (ingredient.equalsIgnoreCase("done")) {
+                break;
+            }
+            ingredients.add(ingredient);
+        }
+        return ingredients;
+    }
 
-         // vis menuen i terminalen
-         pizzaMenu.displayMenu();
-     }
+    private static void removePizzaFromMenu(InputHelper inputHelper, PizzaMenu pizzaMenu) {
+        int pizzaId = inputHelper.getInt("Enter pizza ID to remove: ");
+        Pizza pizzaToRemove = findPizzaById(pizzaId, pizzaMenu);
 
-// customer test
-{
-    Customer customer1 = new Customer(1, "Cheese McDick", "123456969", true, "12 Cock st", 0);
-    
-    System.out.println("Customer ID: " + customer1.getId());
-    System.out.println("Customer Name: " + customer1.getName());
-    System.out.println("Customer Phone: " + customer1.getPhoneNumber());  
-    System.out.println("Customer VIP: " + customer1.isVip()); 
-    System.out.println("Customer Address: " + customer1.getAddress());
-    System.out.println("Customer Order Count: " + customer1.getOrderCount());
-    
-    customer1.setName("Klaus Cockberg");
-    customer1.setPhoneNumber("987654321");
-    customer1.setVip(false);
-    customer1.setAddress("456 Balls Ave");
-    
-    System.out.println("\nAfter updating customer details:");
-    System.out.println("Updated Name: " + customer1.getName());  // Should print "Klaus Cockberg"
-    System.out.println("Updated Phone: " + customer1.getPhoneNumber());  // Should print "987654321"
-    System.out.println("Updated VIP: " + customer1.isVip());  // Should print false
-    System.out.println("Updated Address: " + customer1.getAddress());  // Should print "456 Balls Ave"
-    
-    double originalPrice = 100.0;
-    double discountedPrice = customer1.applyDiscount(originalPrice);
-    System.out.println("\nPrice after discount: " + discountedPrice);  // Should print 100.0 (since VIP is false)
-    
-    customer1.setVip(true);
-    discountedPrice = customer1.applyDiscount(originalPrice);
-    System.out.println("Price after VIP discount: " + discountedPrice);
-}
+        if (pizzaToRemove != null) {
+            pizzaMenu.removePizza(pizzaToRemove);
+            System.out.println("Pizza removed from the menu.");
+        } else {
+            System.out.println("Pizza not found.");
+        }
+    }
 
+    private static Pizza findPizzaById(int pizzaId, PizzaMenu pizzaMenu) {
+        return pizzaMenu.getPizzas().stream()
+                .filter(pizza -> pizza.getId() == pizzaId)
+                .findFirst()
+                .orElse(null);
+    }
+
+    private static void placeNewOrder(InputHelper inputHelper, PizzaMenu pizzaMenu, List<Order> orders, DatabaseOrderManager orderManager) {
+        System.out.println("Placing a new order.");
+        String customerName = inputHelper.getString("Enter customer name: ");
+        String phoneNumber = inputHelper.getString("Enter phone number: ");
+        boolean isVip = inputHelper.getString("Is the customer a VIP? (yes/no): ").equalsIgnoreCase("yes");
+
+        LocalDateTime orderTime = LocalDateTime.now();
+        LocalDateTime pickupTime = orderTime.plusHours(1);
+
+        Order newOrder = new Order(customerName, phoneNumber, isVip, orderTime, pickupTime, OrderStatus.PENDING);
+        addPizzasToOrder(inputHelper, pizzaMenu, newOrder);
+
+        orders.add(newOrder);
+        orderManager.saveOrder(newOrder);  // Save the new order to the database
+        System.out.println("Order placed successfully.");
+        newOrder.displayOrder();
+    }
+
+    private static void addPizzasToOrder(InputHelper inputHelper, PizzaMenu pizzaMenu, Order order) {
+        while (true) {
+            pizzaMenu.displayMenu();
+            int pizzaChoice = inputHelper.getInt("Enter pizza ID to add to the order (or type 0 to finish): ");
+            if (pizzaChoice == 0) break;
+
+            Pizza selectedPizza = findPizzaById(pizzaChoice, pizzaMenu);
+            if (selectedPizza != null) {
+                order.addPizza(selectedPizza);
+                System.out.println("Added " + selectedPizza.getName() + " to the order.");
+            } else {
+                System.out.println("Invalid pizza ID.");
+            }
+        }
+    }
+
+    private static void viewAllOrders(List<Order> orders) {
+        List<Order> activeOrders = new ArrayList<>();
+        for (Order order : orders) {
+            if (order.getStatus() != OrderStatus.COMPLETED && order.getStatus() != OrderStatus.CANCELED) {
+                activeOrders.add(order);
+            }
+        }
+
+        // Sort active orders by pickup time (closest to furthest)
+        activeOrders.sort(Comparator.comparing(Order::getPickupTime));
+
+        if (activeOrders.isEmpty()) {
+            System.out.println("No active orders have been placed yet.");
+        } else {
+            System.out.println("Active Orders (sorted by closest pickup time):");
+            for (Order order : activeOrders) {
+                order.displayOrder();
+                System.out.println("----------");
+            }
+        }
+    }
+
+    private static void editOrder(InputHelper inputHelper, PizzaMenu pizzaMenu, List<Order> orders, DatabaseOrderManager orderManager) {
+        int orderIdToEdit = inputHelper.getInt("Enter the Order ID to edit: ");
+        Order orderToEdit = findOrderById(orderIdToEdit, orders);
+
+        if (orderToEdit != null) {
+            System.out.println("Editing Order:");
+            orderToEdit.displayOrder();
+
+            System.out.println("---------------------");
+            System.out.println("1. Add Pizza to Order");
+            System.out.println("2. Mark Order as Completed");
+            System.out.println("3. Mark Order as Cancelled");
+            System.out.println("0. Exit");
+            int editChoice = inputHelper.getInt("Choose an option: ");
+
+            switch (editChoice) {
+                case 1 -> addPizzasToOrder(inputHelper, pizzaMenu, orderToEdit);
+                case 2 -> {
+                    orderToEdit.setStatus(OrderStatus.COMPLETED);
+                    System.out.println("Order marked as completed.");
+                }
+                case 3 -> {
+                    orderToEdit.setStatus(OrderStatus.CANCELED);
+                    System.out.println("Order marked as cancelled.");
+                }
+                default -> System.out.println("Invalid choice.");
+            }
+            orderManager.updateOrderStatus(orderToEdit.getId(), orderToEdit.getStatus());  // Update order status in the database
+        } else {
+            System.out.println("Order not found.");
+        }
+    }
+
+    private static Order findOrderById(int orderId, List<Order> orders) {
+        return orders.stream()
+                .filter(order -> order.getId() == orderId)
+                .findFirst()
+                .orElse(null);
+    }
 }
