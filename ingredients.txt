@@ -1,0 +1,15 @@
+1,Skinke,7
+2,Oksefars,5
+3,Pepperoni,7
+4,Koedsauce,6
+5,Spaghetti,3
+6,Cocktailpoelser,4
+7,Bacon,7
+8,Roed Peber,3
+9,Loeg,3
+10,Oliven,4
+11,Ananas,6
+12,Champignon,4
+13,Rejer,8
+14,Kebab,6
+15,Chili,4
