@@ -1,20 +1,26 @@
+/**
+ * Write a description of class Customer here.
+ *
+ * Brestir Nielsen
+ * 21.10.2024
+ */
 public class Customer
 {
     private int id;
     private String name;
     private String phoneNumber;
+    private String email;
     private boolean vip;
     private String address;
-    private int orderCount;
     
-    public Customer(int id, String name,String phoneNumber, boolean vip, String address, int orderCount) 
+    public Customer(int id, String name,String phoneNumber,String email, boolean vip, String address) 
     {
         this.id = id;
         this.name = name;
         this.phoneNumber = phoneNumber;
+        this.email = email;
         this.vip = vip;
         this.address = address;
-        this.orderCount = orderCount;
     }
     
     public int getId() 
@@ -32,6 +38,11 @@ public class Customer
         return phoneNumber;
     }
     
+    public String getEmail() 
+    {
+        return email;
+    }
+    
      public boolean isVip() 
     {
         return vip;
@@ -40,11 +51,6 @@ public class Customer
     public String getAddress()
     {
         return address;
-    }
-
-    public int getOrderCount() 
-    {
-        return orderCount;
     }
     
     public void setName(String name)
@@ -61,6 +67,11 @@ public class Customer
         
         this.phoneNumber = phoneNumber;
     }
+    
+    public void setEmail(String email)
+    {
+        this.email = email;
+    }
 
     public void setVip(boolean vip) 
     {
@@ -71,11 +82,6 @@ public class Customer
     {
         this.address = address;
     }
-
-    public void setOrderCount(int orderCount) 
-    {
-        this.orderCount = orderCount;
-    }
     
     public double applyDiscount(double price)
     {
@@ -84,10 +90,5 @@ public class Customer
             return price * 0.9;
         }
         return price;
-    }
-
-    public void incrementOrderCount()
-    {
-        this.orderCount++;
     }
 }
